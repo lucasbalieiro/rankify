@@ -12,7 +12,7 @@ export default function JudgeLayout ({
     children: React.ReactNode
 }) {
     return (
-        <Flex gap="middle" wrap="wrap" justify='center'>
+        <Flex gap="middle" wrap="wrap" justify='center' align='center'>
             <Layout>
                 <Header><span className={styles.header_title} >Painel de Jurados</span></Header>
                 <Content className={styles.content}>{children}</Content>
