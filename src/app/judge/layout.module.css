@@ -1,0 +1,14 @@
+.header_title {
+    color: white;
+    text-align: center;
+}
+
+.content {
+    margin: 2em auto;
+    min-height: 100%;
+}
+
+.footer {
+    position: sticky;
+    bottom: 0;
+}
