@@ -52,79 +52,71 @@ export default function LoggedJudge() {
     const handleVote = async (values: any) => {
         const accessToken = localStorage.getItem("accessToken") ?? ''
         setDisableForm(true)
-        const response = await setScore({nominee_id: values.nominee, score: values.score, token: accessToken})
-        console.log(response)
+        const response = await setScore({ nominee_id: values.nominee, score: values.score, token: accessToken })
+        if (response.error) {
+            handleNotification({
+                description: "Oops, chama o bombeiro",
+                title: "Nada resolvido",
+                type: "error"
+            })
+            setDisableForm(false)
 
+            return
+        }
 
-
-        // .then(
-        //     () => {
-        //         setDisableForm(false)
-        //         handleNotification({description:"Voto computado com sucesso", title:"Tudo certo", type: "success"})
-        //     }
-        // )
-        // .catch(
-        //     () => {
-        //         setDisableForm(false)
-        //         handleNotification({
-        //             description: "Oops, chama o bombeiro",
-        //             title: "Nada resolvido",
-        //             type: "error"
-        //         })
-        //     }
-        // )
+        handleNotification({ description: "Voto computado com sucesso", title: "Tudo certo", type: "success" })
 
         setDisableForm(false)
-        
+
     }
 
     const handleNotification = (params: NotificationParams) => {
         notificationApi[params.type]({
-          message: params.title,
-          description: params.description
+            message: params.title,
+            description: params.description
         });
-      };
+    };
 
     return (
         <>
-        {contextHolder}
-        <Form
-            disabled={disableForm}
-            name="vote-nominee"
-            onFinish={handleVote}
-            initialValues={
-                {score:2.5}
-            }
-        >
-            <Form.Item
-                label="Selecione um candidato"
-                name="nominee"
-                rules={[{ required: true, message: 'Selecione um bocó' }]}
+            {contextHolder}
+            <Form
+                disabled={disableForm}
+                name="vote-nominee"
+                onFinish={handleVote}
+                initialValues={
+                    { score: 2.5 }
+                }
             >
-                <Select
-                    loading={loadingNominees}
-                    showSearch={true}
-                    filterOption={(input, option) => (option?.label.toLowerCase() ?? '').includes(input.toLowerCase())}
-                    options={nominees.map((n) => {
-                        return { value: n._id, label: n.name }
-                    })}
-                />
-            </Form.Item>
+                <Form.Item
+                    label="Selecione um candidato"
+                    name="nominee"
+                    rules={[{ required: true, message: 'Selecione um bocó' }]}
+                >
+                    <Select
+                        loading={loadingNominees}
+                        showSearch={true}
+                        filterOption={(input, option) => (option?.label.toLowerCase() ?? '').includes(input.toLowerCase())}
+                        options={nominees.map((n) => {
+                            return { value: n._id, label: n.name }
+                        })}
+                    />
+                </Form.Item>
 
-            <Form.Item
-            label="Qual a pontuação?"
-            name="score"
-            rules={[{required: true, message: "Você precisa dar pelo menos uma estrela. Deixa de ser assim"}]}
-            >
-                <Rate allowClear allowHalf />
-            </Form.Item>
+                <Form.Item
+                    label="Qual a pontuação?"
+                    name="score"
+                    rules={[{ required: true, message: "Você precisa dar pelo menos uma estrela. Deixa de ser assim" }]}
+                >
+                    <Rate allowClear allowHalf />
+                </Form.Item>
 
-            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                <Button type="primary" htmlType="submit">
-                    Votar
-                </Button>
-            </Form.Item>
-        </Form>
+                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                    <Button type="primary" htmlType="submit">
+                        Votar
+                    </Button>
+                </Form.Item>
+            </Form>
         </>
 
     )
