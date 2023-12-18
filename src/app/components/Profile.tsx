@@ -22,7 +22,7 @@ export default function Profile({ data }: { data: Nominee[] }) {
                                 </div>
                             </div>
                             <div className="item">
-                                <span>{item.score}</span>
+                                <span>{item.score.reduce((a,b) => a + b.value, 0)}</span>
                             </div>
                         </div>
                     );
