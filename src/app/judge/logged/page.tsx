@@ -81,6 +81,15 @@ export default function LoggedJudge() {
         <>
             {contextHolder}
             <Form
+            style={
+                {
+                    textAlign: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignContent: 'center',
+                }
+            }
                 disabled={disableForm}
                 name="vote-nominee"
                 onFinish={handleVote}
@@ -94,6 +103,7 @@ export default function LoggedJudge() {
                     rules={[{ required: true, message: 'Selecione um bocó' }]}
                 >
                     <Select
+                        size="large"
                         loading={loadingNominees}
                         showSearch={true}
                         filterOption={(input, option) => (option?.label.toLowerCase() ?? '').includes(input.toLowerCase())}
@@ -108,11 +118,13 @@ export default function LoggedJudge() {
                     name="score"
                     rules={[{ required: true, message: "Você precisa dar pelo menos uma estrela. Deixa de ser assim" }]}
                 >
-                    <Rate allowClear allowHalf />
+                    <Rate allowClear allowHalf
+                        style={{ fontSize: 60 }}
+                    />
                 </Form.Item>
 
-                <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                    <Button type="primary" htmlType="submit">
+                <Form.Item>
+                    <Button type="primary" htmlType="submit" size="large">
                         Votar
                     </Button>
                 </Form.Item>
