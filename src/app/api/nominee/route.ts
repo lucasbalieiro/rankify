@@ -1,9 +1,9 @@
 import { Db, Collection, ObjectId } from "mongodb";
 import { NextResponse, NextRequest } from "next/server";
 
-import { connectToDatabase } from "@/app/services/database";
-import Nominee from "@/app/interfaces/nominee";
-import Judge from "@/app/interfaces/judge";
+import { connectToDatabase } from "@/services/database";
+import Nominee from "@/interfaces/nominee";
+import Judge from "@/interfaces/judge";
 let db: Db;
 
 export async function GET(request: NextRequest) {

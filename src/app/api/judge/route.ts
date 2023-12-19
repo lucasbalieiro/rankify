@@ -1,8 +1,8 @@
 import { Db, Collection } from "mongodb";
 import { NextResponse, NextRequest } from "next/server";
 
-import { connectToDatabase } from "@/app/services/database";
-import Nominee from "@/app/interfaces/nominee";
+import { connectToDatabase } from "@/services/database";
+import Nominee from "@/interfaces/nominee";
 let db: Db;
 
 export async function POST(request: NextRequest) {

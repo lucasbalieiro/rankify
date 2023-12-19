@@ -3,7 +3,7 @@ import { Input, Button, Form } from "antd"
 import { ValidateStatus } from "antd/es/form/FormItem"
 import { UserOutlined } from "@ant-design/icons"
 import { useState } from "react"
-import { authenticateJudge } from "@/app/services/judge"
+import { authenticateJudge } from "@/services/judge"
 import { useRouter } from "next/navigation"
 
 

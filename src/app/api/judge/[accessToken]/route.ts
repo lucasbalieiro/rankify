@@ -1,5 +1,5 @@
-import Judge from "@/app/interfaces/judge";
-import { connectToDatabase } from "@/app/services/database";
+import Judge from "@/interfaces/judge";
+import { connectToDatabase } from "@/services/database";
 import { Collection, Db } from "mongodb";
 import { NextRequest ,NextResponse } from "next/server";
 

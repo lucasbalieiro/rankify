@@ -1,7 +1,7 @@
 'use client'
-import Nominee from "@/app/interfaces/nominee"
-import { validateToken } from "@/app/services/judge"
-import { getNominees, setScore } from "@/app/services/nominee"
+import Nominee from "@/interfaces/nominee"
+import { validateToken } from "@/services/judge"
+import { getNominees, setScore } from "@/services/nominee"
 import { Form } from "antd"
 import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"

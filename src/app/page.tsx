@@ -1,11 +1,10 @@
-import Board from './components/Board'
+import { Flex } from 'antd'
 import './page.module.css'
 
 export default function Home() {
   return (
-    <div className='App' id='main'>
-      <Board />
-
-    </div>
+    <Flex gap="middle" wrap="wrap" justify='center' align='center'>
+      <h1>Score</h1>
+    </Flex>
   )
 }
