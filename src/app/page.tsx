@@ -1,5 +1,5 @@
 "use client"
-import { Flex } from 'antd'
+import { Flex, Divider } from 'antd'
 
 import './page.module.css'
 import Profile from '@/components/profile/Profile'
@@ -19,8 +19,23 @@ export default function Home() {
   }, [])
 
   return (
-    <Flex gap="middle" wrap="wrap" justify='center' align='center'>
-      {nominees.map((nominee) => <Profile nominee={nominee}/>)}
-    </Flex>
+    <>
+      <Flex vertical gap="large" wrap="wrap" justify='center' align='center'>
+        <Divider plain>
+          <h1 style={{ textAlign: 'center' }}>Até que cantam bem</h1>
+        </Divider>
+        <Flex gap="large" wrap="wrap" justify='center' align='center'>
+          {nominees.slice(0, 3).map((nominee, index) => <Profile key={index} nominee={nominee} position={index + 1} />)}
+        </Flex>
+      </Flex>
+      <Flex vertical gap="large" wrap="wrap" justify='center' align='center'>
+        <Divider>
+          <h1 style={{ textAlign: 'center' }}>Inimigos do Ritmo</h1>
+        </Divider>
+        <Flex gap="large" wrap="wrap" justify='center' align='center'>
+          {nominees.slice(3).map((nominee, index) => <Profile key={index+99} nominee={nominee} position={index + 4} />)}
+        </Flex>
+      </Flex>
+    </>
   )
 }
