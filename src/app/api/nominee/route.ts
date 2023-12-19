@@ -9,8 +9,34 @@ let db: Db;
 export async function GET(request: NextRequest) {
     db = await connectToDatabase(db);
     const collection: Collection<Nominee> = db.collection('nominees');
+    const cursor = collection.aggregate([
+        {
+            $unwind: "$score",
+        },
+        {
+            $group: {
+                _id: "$_id",
+                name: {
+                    $first: "$name",
+                },
+                section: {
+                    $first: "$section",
+                },
+                avatar: {
+                    $first: "$avatar",
+                },
+                score: {
+                    $push: "$score",
+                },
+                averageScore: {
+                    $avg: "$score.value",
+                },
+            },
+        },
+    ]);
 
-    const nominees = await collection.find({}).sort({ score: -1 }).toArray();
+
+    const nominees = await cursor.sort({averageScore: -1}).toArray();
 
     return NextResponse.json(nominees, { status: 200 });
 }

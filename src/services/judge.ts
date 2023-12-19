@@ -1,5 +1,3 @@
-import { metadata } from "../layout";
-
 export async function authenticateJudge(payload: any): Promise<any> {
     const response = await fetch('/api/judge',
         {

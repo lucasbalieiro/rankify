@@ -4,6 +4,7 @@ export default interface Nominee {
     section: string;
     score: NomineeScore[];
     avatar: string;
+    averageScore?: number
 }
 
 interface NomineeScore {
