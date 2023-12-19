@@ -50,7 +50,7 @@ export default function Profile({ nominee, position }: { nominee: Nominee, posit
             <Modal title={`Pontuacões de ${nominee.name}`} open={isModalOpen} onOk={handleOk}
 
                 footer={[
-                    <Button onClick={handleOk} type='primary'>
+                    <Button  key="noice"onClick={handleOk} type='primary'>
                         OK
                     </Button>,
 
