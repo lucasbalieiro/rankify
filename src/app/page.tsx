@@ -35,7 +35,7 @@ export default function Home() {
                             </List.Item>
 
                         </Link>
-                        <Link href="#">
+                        <Link href="/people">
                             <List.Item>
                                 <List.Item.Meta
                                     avatar={<CommentOutlined />}

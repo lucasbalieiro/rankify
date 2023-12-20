@@ -43,7 +43,7 @@ export default function Profile({ nominee, position }: { nominee: Nominee, posit
                 >
                     <div style={{ textAlign: "center" }}>
                         <h2>{nominee.name}</h2>
-                        <h4>Pontuação Média: {nominee.averageScore}</h4>
+                        <h4>Pontuação Média: {nominee.weightedAverage}</h4>
                     </div>
                 </Card>
             </Badge>
@@ -61,6 +61,8 @@ export default function Profile({ nominee, position }: { nominee: Nominee, posit
                     {nominee.score.map((score, index) => {
                         return <p key={score.judge_id}>Jurado {index + 1}: {score.value}</p>
                     })}
+                    <h3>Voz do Povo</h3>
+                    {nominee.totalPeopleScore ?? 0}
                 </div>
             </Modal>
 

@@ -9,6 +9,8 @@ let db: Db;
 export async function GET(request: NextRequest) {
     db = await connectToDatabase(db);
     const collection: Collection<Nominee> = db.collection('nominees');
+
+    // First Aggregation
     const cursor = collection.aggregate([
         {
             $unwind: "$score",
@@ -35,10 +37,36 @@ export async function GET(request: NextRequest) {
         },
     ]);
 
+    const nominees = await cursor.sort({ averageScore: -1 }).toArray();
 
-    const nominees = await cursor.sort({averageScore: -1}).toArray();
+    // Second Aggregation
+    const peopleScoreCollection: Collection = db.collection('people_score');
+    const peopleScoreResult = await peopleScoreCollection.aggregate([
+        {
+            $group: {
+                _id: "$nominee_id",
+                totalPeopleScore: { $sum: "$score" }
+            }
+        }
+    ]).toArray();
 
-    return NextResponse.json(nominees, { status: 200 });
+    
+    const combinedResults = nominees.map(nominee => {
+        const peopleScoreData = peopleScoreResult.find(item => item._id.equals(nominee._id));
+
+        const weightedAverage = (
+            (nominee.averageScore * 2) +  
+            (peopleScoreData ? peopleScoreData.totalPeopleScore : 0) 
+        ) / 3;
+
+        return {
+            ...nominee,
+            totalPeopleScore: peopleScoreData ? peopleScoreData.totalPeopleScore : 0,
+            weightedAverage: weightedAverage
+        };
+    });
+
+    return NextResponse.json(combinedResults, { status: 200 });
 }
 
 export async function PUT(request: NextRequest) {
