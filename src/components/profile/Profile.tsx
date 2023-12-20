@@ -10,11 +10,11 @@ export default function Profile({ nominee, position }: { nominee: Nominee, posit
     function generateColor(): string {
         const caracteresHex = '0123456789ABCDEF';
         let color = '#';
-    
+
         for (let i = 0; i < 6; i++) {
             color += caracteresHex[Math.floor(Math.random() * 16)];
         }
-    
+
         return color;
     }
 
@@ -50,7 +50,7 @@ export default function Profile({ nominee, position }: { nominee: Nominee, posit
             <Modal title={`Pontuacões de ${nominee.name}`} open={isModalOpen} onOk={handleOk}
 
                 footer={[
-                    <Button  key="noice"onClick={handleOk} type='primary'>
+                    <Button key="noice" onClick={handleOk} type='primary'>
                         OK
                     </Button>,
 
@@ -63,6 +63,11 @@ export default function Profile({ nominee, position }: { nominee: Nominee, posit
                     })}
                     <h3>Voz do Povo</h3>
                     {nominee.totalPeopleScore ?? 0}
+
+                    <h3>Total Final</h3>
+                    {nominee.weightedAverage ?? 0}
+                    <br />
+                    <small>Conta do Padeiro: ((media aritmética dos jurados) * 2 + Voz do povo) / 3 </small>
                 </div>
             </Modal>
 
