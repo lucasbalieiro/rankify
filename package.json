@@ -10,8 +10,6 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
-    "@vercel/analytics": "^1.1.1",
-    "@vercel/speed-insights": "^1.0.2",
     "antd": "^5.12.3",
     "framer-motion": "^10.16.16",
     "mongodb": "^6.3.0",

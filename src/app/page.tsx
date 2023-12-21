@@ -1,18 +1,22 @@
 'use client'
 import { AuditOutlined, CommentOutlined, CrownOutlined, OrderedListOutlined } from "@ant-design/icons";
-import { Divider, Flex, List, Space } from "antd";
-import { Footer } from "antd/es/layout/layout";
+import { Divider, Layout, Flex, List, Space } from "antd";
 import Link from "next/link";
+
+const { Content, Footer } = Layout
 
 export default function Home() {
 
     return (
-        <>
-            <Flex gap="large" justify="center" style={{ margin: 15 }}>
+        <Flex vertical gap="middle" wrap="wrap" justify="center" align="center">
+            <Layout>
                 <Space direction="vertical">
-                    <h1>Bem-vindo ao show de Torturas Auditivas</h1>
+                    <div style={{ textAlign: 'center' }}>
+                        <h1>Bem-vindo ao show de Torturas Auditivas</h1>
 
-                    <h3>O que deseja fazer?</h3>
+                        <h3>O que deseja fazer?</h3>
+
+                    </div>
                     <Divider></Divider>
                     <List itemLayout="horizontal" size="large" >
                         <Link href="/scoreboard">
@@ -56,16 +60,21 @@ export default function Home() {
                     </List>
 
                 </Space>
-            </Flex >
-            <Footer
-                style={{
-                    width: "100%",
-                    position: "absolute",
-                    bottom: 0
-                }}
-            >
-                <p style={{ textAlign: "center" }} >Este software não foi testado e foi feito na hora do almoço, por favor, não abuse</p>
-            </Footer>
-        </>
+
+                <Footer
+                    style={{
+                        position: 'sticky',
+                        bottom: 0
+                    }}
+                >
+                    <p style={{ textAlign: "center" }} >Este software não foi testado e foi feito na hora do almoço, por favor, não abuse</p>
+                </Footer>
+            </Layout>
+
+        </Flex >
+
+
+
+
     )
 }
