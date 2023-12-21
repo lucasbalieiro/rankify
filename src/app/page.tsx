@@ -19,7 +19,7 @@ export default function Home() {
                     </div>
                     <Divider></Divider>
                     <List itemLayout="horizontal" size="large" >
-                        <Link href="/scoreboard">
+                        {/* <Link href="/scoreboard">
                             <List.Item>
                                 <List.Item.Meta
                                     avatar={<OrderedListOutlined />}
@@ -27,7 +27,7 @@ export default function Home() {
                                     description="Se você deseja ver a pontuacao de todos os candidatos, clique aqui"
                                 />
                             </List.Item>
-                        </Link>
+                        </Link> */}
 
                         <Link href="/judge">
                             <List.Item>
@@ -48,7 +48,7 @@ export default function Home() {
                                 />
                             </List.Item>
                         </Link>
-                        <Link href="/champions">
+                        {/* <Link href="/champions">
                             <List.Item >
                                 <List.Item.Meta
                                     avatar={<CrownOutlined />}
@@ -56,7 +56,7 @@ export default function Home() {
                                     description="Os campeões que serão premiados com um almoço no Restaurante Internacional Mosca-Frita"
                                 />
                             </List.Item>
-                        </Link>
+                        </Link> */}
                     </List>
 
                 </Space>
