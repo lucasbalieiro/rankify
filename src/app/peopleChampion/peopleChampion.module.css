@@ -9,8 +9,8 @@
 .winner {
     border-radius: 100%;
     border: 20px solid white;
-    width: auto;
-    height: auto;
+    width: 310px;
+    height: 310px;
 }
 
 .fireworks svg {
