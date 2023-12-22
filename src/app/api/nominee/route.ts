@@ -30,8 +30,8 @@ export async function GET(request: NextRequest) {
                 score: {
                     $push: "$score",
                 },
-                averageScore: {
-                    $avg: "$score.value",
+                totalScore: {
+                    $sum: "$score.value",
                 },
             },
         },
