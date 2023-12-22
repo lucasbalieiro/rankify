@@ -5,7 +5,7 @@ export default interface Nominee {
     score: NomineeScore[];
     avatar: string;
     totalScore?: number
-    totalPeopleScore?: number
+    totalPeopleScore: number
 }
 
 interface NomineeScore {

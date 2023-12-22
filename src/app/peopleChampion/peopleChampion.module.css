@@ -1,0 +1,20 @@
+.container {
+    background: url("/background.png");
+    background-size: cover;
+    height: 100vh;
+    color: white;
+    overflow: hidden;
+}
+
+.winner {
+    border-radius: 100%;
+    border: 20px solid white;
+    width: auto;
+    height: auto;
+}
+
+.fireworks svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
