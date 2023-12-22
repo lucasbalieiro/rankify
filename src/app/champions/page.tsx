@@ -22,20 +22,17 @@ export default function ChampionsByJduge() {
 
     const { Content } = Layout
 
-    const second_place = nominees[1]?.name.toLowerCase().split(' ')[0]
-    const third_place = nominees[2]?.name.toLowerCase().split(' ')[0]
     return (
 
         <Layout className={style.layout}>
-            <Content>
-                <div>
+            <Content >
 
+                <div>
                     <Lottie animationData={rankingAnimation} loop={false}>
                     </Lottie>
                     <img className={style.third_place} src={`/profile_pics/${nominees[2]?.name.toLowerCase().split(' ')[0]}.jpeg`} alt="champion" />
                     <img className={style.first_place} src={`/profile_pics/${nominees[0]?.name.toLowerCase().split(' ')[0]}.jpeg`} alt="champion" />
                     <img className={style.second_place} src={`/profile_pics/${nominees[1]?.name.toLowerCase().split(' ')[0]}.jpeg`} alt="champion" />
-
                 </div>
             </Content>
         </Layout>

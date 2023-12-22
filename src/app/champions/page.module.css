@@ -1,7 +1,7 @@
 .layout {
     background-image: url("/background.png");
     background-repeat: no-repeat;
-    overflow: hidden;
+    overflow: auto;
     background-size: cover;
 }
 
@@ -9,14 +9,13 @@
 .first_place {
     animation: 15s ease 0s normal forwards 1 fadein;
     -webkit-animation: 15s ease 0s normal forwards 1 fadein;
-    
     z-index: 1;
     position: absolute;
-    top: 240px;
-    left: 630px;
-    border-radius: 600px;
-    width: 600px;
-    height: 600px;
+    top: 120px;
+    left: 340px;
+    border-radius: 100%;
+    width: 325px;
+    height: 335px;
 }
 
 .second_place {
@@ -24,24 +23,23 @@
     -webkit-animation: 17s ease 0s normal forwards 1 fadein;
     z-index: 1;
     position: absolute;
-    top: 540px;
-    right: 250px;
-    border-radius: 200px;
-    width: 256px;
-    height: 256px;
+    top: 290px;
+    right: 135px;
+    border-radius: 100%;
+    width: 140px;
+    height: 140px;
 }
 
 .third_place {
     animation: 17s ease 0s normal forwards 1 fadein;
     -webkit-animation: 17s ease 0s normal forwards 1 fadein;
-    
     z-index: 1;
     position: absolute;
-    top: 685px;
-    left: 216px;
-    border-radius: 200px;
-    width: 256px;
-    height: 256px;
+    top: 365px;
+    left: 115px;
+    border-radius: 100%;
+    width: 140px;
+    height: 140px;
 }
 
 
@@ -65,7 +63,7 @@
     }
 
     66% {
-        opacity: 0    ;
+        opacity: 0;
     }
 
     100% {
