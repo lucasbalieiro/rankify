@@ -37,7 +37,7 @@ export async function GET(request: NextRequest) {
         },
     ]);
 
-    const nominees = await cursor.sort({ averageScore: -1 }).toArray();
+    const nominees = await cursor.sort({ totalScore: -1 }).toArray();
 
     // Second Aggregation
     const peopleScoreCollection: Collection = db.collection('people_score');
@@ -54,15 +54,9 @@ export async function GET(request: NextRequest) {
     const combinedResults = nominees.map(nominee => {
         const peopleScoreData = peopleScoreResult.find(item => item._id.equals(nominee._id));
 
-        const weightedAverage = (
-            (nominee.averageScore * 2) +  
-            (peopleScoreData ? peopleScoreData.totalPeopleScore : 0) 
-        ) / 3;
-
         return {
             ...nominee,
             totalPeopleScore: peopleScoreData ? peopleScoreData.totalPeopleScore : 0,
-            weightedAverage: weightedAverage
         };
     });
 
